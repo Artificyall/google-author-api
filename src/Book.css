@@ -1,0 +1,18 @@
+.book-box {
+  height: 20rem;
+  padding: 2px;
+  background-color: #4b5563;
+  overflow: auto;
+  border-radius: 0.375rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid #4a5568;
+  transition: border-color 0.2s ease-in-out;
+}
+.book-box:hover {
+  background-color: #282c34;
+  border: 1px solid #282c34;
+}

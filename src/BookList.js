@@ -1,31 +1,42 @@
-import React from 'react';
-import axios from 'axios';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "./App.css";
+import Book from "./Book";
 
-export default class BookList extends React.Component {
-  state = {
-    books: []
-  }
+export const BookList = () => {
+  const [books, setBooks] = useState([]);
+  const [query, setQuery] = useState("penguinos");
 
-  componentDidMount() {
-    axios.get(`https://www.googleapis.com/books/v1/volumes?q=the lord of the rings+inauthor:tolkien&maxResults=40`)
-      .then(res => {
-        const books = res.data.items;
-        this.setState({ books });
-        console.log(books);
+  useEffect(() => {
+    if (!query) return;
+    axios
+      .get(`https://www.googleapis.com/books/v1/volumes?q=inauthor:${query}`)
+      .then((response) => {
+        setBooks(response.data.items);
       })
-  }
+      .catch((error) => {});
+  }, [query]);
 
-  render() {
-    return (
-      <ul>
-        {
-          this.state.books
-            .map(book =>
-              <li key={book.id}>{book.volumeInfo.title}</li>
-            )
-        }
-      </ul>
-    )
-  }
-}
+  return (
+    <div className="App">
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          setQuery(event.target.elements.query.value);
+        }}
+      >
+        <input type="text" name="query" placeholder="Penguinos..." />
+        <button type="submit">Rechercher</button>
+      </form>
+      {books && (
+        <ul>
+          {books.map((book) => (
+            <li key={book.id}>
+              <Book book={book} />
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};

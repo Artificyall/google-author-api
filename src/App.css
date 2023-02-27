@@ -41,3 +41,18 @@ li {
   text-align: left;
   list-style: none;
 }
+
+ul {
+  grid-gap: 4px;
+  padding: 1vw;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 992px) {
+  ul {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+}
