@@ -13,6 +13,14 @@
   }
 }
 
+input[type=text] {
+  background-color: #282c34;
+  border: none;
+  color : white;
+  border-bottom: 1px solid #4a5568;
+}
+
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

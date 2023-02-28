@@ -17,6 +17,8 @@ export const BookList = () => {
       .catch((error) => {});
   }, [query]);
 
+/*        <button type="submit">Rechercher</button> */
+
   return (
     <div className="App">
       <form
@@ -26,7 +28,6 @@ export const BookList = () => {
         }}
       >
         <input type="text" name="query" placeholder="Penguinos..." />
-        <button type="submit">Rechercher</button>
       </form>
       {books && (
         <ul>
