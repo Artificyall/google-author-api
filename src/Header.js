@@ -1,11 +1,11 @@
 import React from "react";
-import "./App.css";
+import "./Header.css";
 
 export default function Header() {
-    return(
-    <div className="App">
-          <h1>API de recherche Google </h1>
-          <p>By Penguinos Corp.</p>
+  return (
+    <div className="head">
+      <h1>API de recherche Google </h1>
+      <p>By Penguinos Corp.</p>
     </div>
-    )
+  );
 }

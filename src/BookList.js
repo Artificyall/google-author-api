@@ -48,15 +48,22 @@ export const BookList = () => {
           ))}
         </ul>
       )}
-      <div className="pagination">
-        <button disabled={page === 0} onClick={() => setPage(page - 1)}>
-          Prev
-        </button>
-        <p>
-          Page {page + 1} / {totalItems} books
-        </p>
-        <button onClick={() => setPage(page + 1)}>Next</button>
-      </div>
+      {books && (
+        <div className="pagination">
+          <button disabled={page === 0} onClick={() => setPage(page - 1)}>
+            Prev
+          </button>
+          <p>
+            Page {page + 1} / {totalItems / 10} books
+          </p>
+          <button
+            disabled={page >= totalItems / 10 - 1}
+            onClick={() => setPage(page + 1)}
+          >
+            Next
+          </button>
+        </div>
+      )}
     </div>
   );
 };
