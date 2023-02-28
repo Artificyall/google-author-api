@@ -13,13 +13,12 @@
   }
 }
 
-input[type=text] {
+input[type="text"] {
   background-color: #282c34;
   border: none;
-  color : white;
+  color: white;
   border-bottom: 1px solid #4a5568;
 }
-
 
 .App-header {
   background-color: #282c34;
@@ -63,4 +62,18 @@ ul {
     grid-template-columns: repeat(5, minmax(0, 1fr));
     grid-template-rows: repeat(2, minmax(0, 1fr));
   }
+}
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: white;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
