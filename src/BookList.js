@@ -5,9 +5,9 @@ import Book from "./Book";
 
 export const BookList = () => {
   const [books, setBooks] = useState([]);
-  const [query, setQuery] = useState("penguinos");
+  const [query, setQuery] = useState("");
   const [page, setPage] = useState(0);
-  const [totalItems, setTotalItems] = useState(0);
+  const [totalItems, setTotalItems] = useState(-1);
 
   useEffect(() => {
     if (!query) return;
@@ -24,8 +24,6 @@ export const BookList = () => {
       .catch((error) => {});
   }, [query, page]);
 
-  /*        <button type="submit">Rechercher</button> */
-
   return (
     <div className="App">
       <form
@@ -37,24 +35,33 @@ export const BookList = () => {
       >
         <input type="text" name="query" placeholder="Penguinos..." />
       </form>
-      {books && (
-        <ul>
-          {books.map((book) => (
-            <li key={book.id}>
-              <a href={book.volumeInfo.previewLink}>
-                <Book book={book} />
-              </a>
-            </li>
-          ))}
-        </ul>
+      {totalItems >= 0 ? (
+        <p className="nbLivres"> {totalItems} résultats trouvés..</p>
+      ) : (
+        <p className="nbLivres">
+          De quel auteur souhaitez vous lire un livre ?
+        </p>
       )}
       {books && (
+        <>
+          <ul>
+            {books.map((book) => (
+              <li key={book.id}>
+                <a href={book.volumeInfo.previewLink}>
+                  <Book book={book} />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+      {totalItems > 0 && (
         <div className="pagination">
           <button disabled={page === 0} onClick={() => setPage(page - 1)}>
             Prev
           </button>
           <p>
-            Page {page + 1} / {totalItems / 10} books
+            Page {page + 1} / {Math.round(totalItems / 10)} pages
           </p>
           <button
             disabled={page >= totalItems / 10 - 1}

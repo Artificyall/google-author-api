@@ -6,7 +6,7 @@ export default function Book({ book }) {
   return (
     <div className="book-box">
       <div className="parent">
-        <h2 className="title">{book.volumeInfo.title.slice(0, 10) + "..."}</h2>
+        <h2 className="title">{book.volumeInfo.title.slice(0, 9) + "..."}</h2>
         <p className="desc">
           {book.volumeInfo.description &&
             book.volumeInfo.description?.slice(0, 130) + "..."}
