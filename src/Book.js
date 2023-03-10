@@ -8,8 +8,9 @@ export default function Book({ book }) {
       <div className="parent">
         <h2 className="title">{book.volumeInfo.title.slice(0, 9) + "..."}</h2>
         <p className="desc">
-          {book.volumeInfo.description &&
-            book.volumeInfo.description?.slice(0, 130) + "..."}
+          {book.volumeInfo.description
+            ? book.volumeInfo.description?.slice(0, 130) + "..."
+            : "Pas de description disponible"}
         </p>
         {book.volumeInfo.imageLinks ? (
           <img
