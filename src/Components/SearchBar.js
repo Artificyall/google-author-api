@@ -1,10 +1,11 @@
 import React from "react"
 
-export const SearchBar = ({ onSubmit }) => {
+export const SearchBar = ({ setQuery, setPage }) => {
   const handleSubmit = (event) => {
     event.preventDefault()
     const query = event.target.elements.query.value
-    onSubmit(query)
+    setQuery(query)
+    setPage(0)
   }
 
   return (

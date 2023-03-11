@@ -3,7 +3,10 @@ import React from "react"
 export const Pagination = ({ page, setPage, totalItems }) => {
   return (
     <div className="pagination">
-      <button disabled={page === 0} onClick={() => setPage(page - 1)}>
+      <button
+        disabled={page === 0}
+        onClick={() => setPage((prevPage) => prevPage - 1)}
+      >
         Prev
       </button>
       <p>
@@ -11,7 +14,7 @@ export const Pagination = ({ page, setPage, totalItems }) => {
       </p>
       <button
         disabled={page >= totalItems / 10 - 1}
-        onClick={() => setPage(page + 1)}
+        onClick={() => setPage((prevPage) => prevPage + 1)}
       >
         Next
       </button>

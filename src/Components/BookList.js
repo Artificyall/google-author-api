@@ -3,9 +3,8 @@ import axios from "axios"
 import Book from "./Book"
 import { Pagination } from "./Pagination"
 
-export const BookList = ({ query }) => {
+export const BookList = ({ query, setPage, page }) => {
   const [books, setBooks] = useState([])
-  const [page, setPage] = useState(0)
   const [totalItems, setTotalItems] = useState(-1)
 
   useEffect(() => {
@@ -21,31 +20,29 @@ export const BookList = ({ query }) => {
         setTotalItems(response.data.totalItems)
       })
       .catch((error) => {
-        console.log("Voici l'erreur : ", error)
+        console.log("Erreur : ", error)
       })
   }, [query, page])
 
   return (
-    <div className="BookList">
+    <div className="book-list">
       {totalItems >= 0 ? (
-        <p className="nbLivres"> {totalItems} résultat(s) trouvé(s)..</p>
+        <p className="nb-livres">{totalItems} résultat(s) trouvé(s)..</p>
       ) : (
-        <p className="nbLivres">
-          De quel auteur souhaitez vous lire un livre ?
+        <p className="nb-livres">
+          De quel auteur souhaitez-vous lire un livre ?
         </p>
       )}
       {books && (
-        <>
-          <ul>
-            {books.map((book) => (
-              <li key={book.id}>
-                <a href={book.volumeInfo.previewLink}>
-                  <Book book={book} />
-                </a>
-              </li>
-            ))}
-          </ul>
-        </>
+        <ul>
+          {books.map((book) => (
+            <li key={book.id}>
+              <a href={book.volumeInfo.previewLink}>
+                <Book book={book} />
+              </a>
+            </li>
+          ))}
+        </ul>
       )}
       {totalItems > 10 && (
         <Pagination page={page} setPage={setPage} totalItems={totalItems} />
