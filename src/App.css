@@ -3,6 +3,12 @@
   text-align: center;
 }
 
+body {
+  background-color: #282c34;
+  color: white;
+  overflow-y: hidden;
+}
+
 input[type="text"] {
   background-color: #4a515f;
   border: none;

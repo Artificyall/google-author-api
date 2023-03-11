@@ -1,6 +1,6 @@
-import React from "react";
-import "./Book.css";
-import { GiSecretBook } from "react-icons/gi";
+import React from "react"
+import "./Style/Book.css"
+import { GiSecretBook } from "react-icons/gi"
 
 export default function Book({ book }) {
   return (
@@ -23,5 +23,5 @@ export default function Book({ book }) {
         )}
       </div>
     </div>
-  );
+  )
 }

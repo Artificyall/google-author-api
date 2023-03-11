@@ -6,15 +6,11 @@
   margin: 0.2rem 1rem 1rem 1rem;
 }
 
-h1 {
-  color: white;
-  padding-top: 0.3rem;
-  margin-block-end: 0em;
+.head > * {
   margin-block-start: 0em;
+  margin-block-end: 0em;
 }
 
-p {
-  color: white;
-  margin-block-start: 0em;
-  margin-block-end: 0em;
+h1 {
+  padding-top: 0.3rem;
 }
